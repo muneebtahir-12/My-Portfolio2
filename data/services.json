@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "FULL STACK DEV",
+    "icon": "code",
+    "description": "Building scalable, responsive web applications from database architecture to pixel-perfect UI."
+  },
+  {
+    "id": 2,
+    "title": "API INTEGRATION",
+    "icon": "api",
+    "description": "Seamlessly connecting third-party services and building robust backend infrastructures."
+  },
+  {
+    "id": 3,
+    "title": "MACHINE LEARNING",
+    "icon": "ml",
+    "description": "Training intelligent models to analyze data, automate processes, and solve complex problems."
+  },
+  {
+    "id": 4,
+    "title": "COMPUTER VISION",
+    "icon": "cv",
+    "description": "Developing visual intelligence pipelines for real-world anomaly detection and analysis."
+  }
+]

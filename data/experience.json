@@ -1,0 +1,72 @@
+[
+  {
+    "id": "exp-2",
+    "category": "Experience",
+    "title": "Frontend Developer",
+    "subtitle": "Safe Care",
+    "date": "2024 - Present",
+    "location": "Hybrid",
+    "description": "Crafting intuitive user interfaces and high-performance web applications using the latest React and Next.js ecosystems.",
+    "tags": ["HTML", "CSS", "JavaScript", "Tailwind", "React", "Next.js", "Git"]
+  },
+  {
+    "id": "exp-1",
+    "category": "Experience",
+    "title": "AI Intern",
+    "subtitle": "Neudym (MCS NUST)",
+    "date": "8 Months",
+    "location": "On-site",
+    "description": "Worked on artificial intelligence models, data processing, and integration at Neudym under MCS NUST. Gained hands-on experience in machine learning pipelines.",
+    "tags": ["AI", "Machine Learning", "Python"]
+  },
+  {
+    "id": "edu-1",
+    "category": "Education",
+    "title": "B.S. Computer Science",
+    "subtitle": "PMAS Arid University",
+    "date": "2024 - Present",
+    "location": "Rawalpindi, Pakistan",
+    "description": "Currently pursuing Bachelor's degree, exploring software engineering, database management, and modern architectural patterns.",
+    "tags": ["Software Engineering", "Databases"]
+  },
+  {
+    "id": "edu-2",
+    "category": "Education",
+    "title": "ICS",
+    "subtitle": "Glorious College Adyala Road",
+    "date": "2022 - 2024",
+    "location": "Rawalpindi, Pakistan",
+    "description": "Deepened my technical foundation during intermediate studies, focusing on advanced mathematics and core software principles.",
+    "tags": ["Mathematics", "Computer Science"]
+  },
+  {
+    "id": "edu-3",
+    "category": "Education",
+    "title": "Computer Science",
+    "subtitle": "Allied School Dhudial Campus",
+    "date": "2020 - 2022",
+    "location": "Chakwal, Pakistan",
+    "description": "Completed my secondary education with a major in Computer Science, where I first discovered my passion for programming and logical problem-solving.",
+    "tags": ["Science", "Programming"]
+  },
+  {
+    "id": "cert-1",
+    "category": "Certification",
+    "title": "Frontend Development",
+    "subtitle": "Sololearn",
+    "date": "2023",
+    "location": "Online",
+    "description": "Comprehensive certification covering HTML, CSS, and modern JavaScript fundamentals.",
+    "tags": ["Frontend", "Web"]
+  },
+  {
+    "id": "cert-2",
+    "category": "Certification",
+    "title": "Responsive Web Design",
+    "subtitle": "freeCodeCamp",
+    "date": "2023",
+    "location": "Online",
+    "description": "Mastered responsive layouts, CSS grid, Flexbox, and media queries to build adaptable web interfaces.",
+    "tags": ["CSS", "Responsive Design"]
+  }
+]

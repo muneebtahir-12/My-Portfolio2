@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Project 1",
+    "description": "A modern web application built with cutting edge technologies.",
+    "image": "/projects/project1.jpeg",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": 2,
+    "title": "Project 2",
+    "description": "An interactive dashboard for data visualization and analytics.",
+    "image": "/projects/project2.png",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": 3,
+    "title": "Project 3",
+    "description": "A scalable and responsive e-commerce platform.",
+    "image": "/projects/project3.png",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": 4,
+    "title": "Project 4",
+    "description": "Real-time chat application with secure authentication.",
+    "image": "/projects/project4.png",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": 5,
+    "title": "Project 5",
+    "description": "AI-powered content generation tool.",
+    "image": "/projects/project5.png",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": 6,
+    "title": "Project 6",
+    "description": "Computer vision pipeline for real-time object tracking.",
+    "image": "/projects/project6.png",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  }
+]
