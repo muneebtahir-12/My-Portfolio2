@@ -18,9 +18,9 @@ function ExperienceItem({ item, activeItem, setActiveItem }) {
   }, [isInView, item, setActiveItem]);
 
   return (
-    <div ref={ref} className="py-8 md:py-12 flex flex-col justify-center relative">
+    <div ref={ref} className="py-6 md:py-8 flex flex-col justify-center relative">
       <h3
-        className={`text-4xl md:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-black uppercase transition-all duration-500 origin-left tracking-tighter ${
+        className={`text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-black uppercase transition-all duration-500 origin-left tracking-tighter ${
           isActive 
             ? "text-white scale-100" 
             : "text-zinc-800 scale-95"
@@ -34,6 +34,10 @@ function ExperienceItem({ item, activeItem, setActiveItem }) {
 
 export default function Experience() {
   const [activeItem, setActiveItem] = useState(experienceData[0]);
+
+  const experiences = experienceData.filter(item => item.category === "Experience");
+  const educations = experienceData.filter(item => item.category === "Education");
+  const certifications = experienceData.filter(item => item.category === "Certification");
 
   return (
     <section id="experience" className="relative z-30 bg-black min-h-screen border-t border-white/5 py-24 lg:py-32">
@@ -55,14 +59,34 @@ export default function Experience() {
           <div className="w-full md:w-1/2 relative z-10">
             {/* Added padding top/bottom so the first/last items can reach the center of the screen */}
             <div className="hidden md:flex flex-col pt-[30vh] pb-[30vh]">
-              {experienceData.map((item) => (
-                <ExperienceItem 
-                  key={item.id} 
-                  item={item} 
-                  activeItem={activeItem}
-                  setActiveItem={setActiveItem} 
-                />
-              ))}
+              
+              {experiences.length > 0 && (
+                <div className="mb-4">
+                  <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-4">Experience</h3>
+                  {experiences.map((item) => (
+                    <ExperienceItem key={item.id} item={item} activeItem={activeItem} setActiveItem={setActiveItem} />
+                  ))}
+                </div>
+              )}
+
+              {educations.length > 0 && (
+                <div className="mt-16 mb-4">
+                  <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-4">Education</h3>
+                  {educations.map((item) => (
+                    <ExperienceItem key={item.id} item={item} activeItem={activeItem} setActiveItem={setActiveItem} />
+                  ))}
+                </div>
+              )}
+
+              {certifications.length > 0 && (
+                <div className="mt-16 mb-4">
+                  <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-4">Certifications</h3>
+                  {certifications.map((item) => (
+                    <ExperienceItem key={item.id} item={item} activeItem={activeItem} setActiveItem={setActiveItem} />
+                  ))}
+                </div>
+              )}
+
             </div>
           </div>
 
@@ -122,42 +146,126 @@ export default function Experience() {
             </AnimatePresence>
           </div>
 
-          {/* Mobile View: Simple Stacked Cards */}
-          <div className="md:hidden flex flex-col gap-6 w-full">
-             {experienceData.map((item) => (
-               <div key={item.id} className="bg-[#0a0a0a] border border-zinc-800/50 p-6 sm:p-8 shadow-xl relative group overflow-hidden rounded-2xl">
-                  <div className="absolute top-0 left-0 w-8 h-1 bg-gradient-to-r from-[#84cc16] to-transparent opacity-30"></div>
-                  <div className="absolute top-0 left-0 w-1 h-8 bg-gradient-to-b from-[#84cc16] to-transparent opacity-30"></div>
-                  
-                  <div className="inline-block px-3 py-1 bg-[#84cc16]/10 border border-[#84cc16]/20 text-[#84cc16] text-[10px] font-bold tracking-widest uppercase mb-4 rounded-full">
-                    {item.category}
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
-                  <p className="text-sm sm:text-base text-zinc-400 mb-6">{item.subtitle}</p>
-                  
-                  <div className="flex flex-col gap-3 mb-6 text-xs text-zinc-500 border-y border-white/5 py-4">
-                    <span className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                      {item.date}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      {item.location}
-                    </span>
-                  </div>
-                  
-                  <p className="text-zinc-300 leading-relaxed mb-6 text-sm">
-                    {item.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-medium text-zinc-300 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-               </div>
-             ))}
+          {/* Mobile View: Simple Stacked Cards with Category Grouping */}
+          <div className="md:hidden flex flex-col w-full">
+            
+            {experiences.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-6">Experience</h3>
+                <div className="flex flex-col gap-6">
+                  {experiences.map((item) => (
+                    <div key={item.id} className="bg-[#0a0a0a] border border-zinc-800/50 p-6 sm:p-8 shadow-xl relative group overflow-hidden rounded-2xl">
+                        <div className="absolute top-0 left-0 w-8 h-1 bg-gradient-to-r from-[#84cc16] to-transparent opacity-30"></div>
+                        <div className="absolute top-0 left-0 w-1 h-8 bg-gradient-to-b from-[#84cc16] to-transparent opacity-30"></div>
+                        
+                        <h4 className="text-2xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
+                        <p className="text-sm sm:text-base text-zinc-400 mb-6">{item.subtitle}</p>
+                        
+                        <div className="flex flex-col gap-3 mb-6 text-xs text-zinc-500 border-y border-white/5 py-4">
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            {item.date}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            {item.location}
+                          </span>
+                        </div>
+                        
+                        <p className="text-zinc-300 leading-relaxed mb-6 text-sm">
+                          {item.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.tags.map((tag) => (
+                            <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-medium text-zinc-300 rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {educations.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-6">Education</h3>
+                <div className="flex flex-col gap-6">
+                  {educations.map((item) => (
+                    <div key={item.id} className="bg-[#0a0a0a] border border-zinc-800/50 p-6 sm:p-8 shadow-xl relative group overflow-hidden rounded-2xl">
+                        <div className="absolute top-0 left-0 w-8 h-1 bg-gradient-to-r from-[#84cc16] to-transparent opacity-30"></div>
+                        <div className="absolute top-0 left-0 w-1 h-8 bg-gradient-to-b from-[#84cc16] to-transparent opacity-30"></div>
+                        
+                        <h4 className="text-2xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
+                        <p className="text-sm sm:text-base text-zinc-400 mb-6">{item.subtitle}</p>
+                        
+                        <div className="flex flex-col gap-3 mb-6 text-xs text-zinc-500 border-y border-white/5 py-4">
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            {item.date}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            {item.location}
+                          </span>
+                        </div>
+                        
+                        <p className="text-zinc-300 leading-relaxed mb-6 text-sm">
+                          {item.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.tags.map((tag) => (
+                            <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-medium text-zinc-300 rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {certifications.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-[#84cc16] text-sm font-bold uppercase tracking-[0.2em] border-b border-white/10 pb-4 mb-6">Certifications</h3>
+                <div className="flex flex-col gap-6">
+                  {certifications.map((item) => (
+                    <div key={item.id} className="bg-[#0a0a0a] border border-zinc-800/50 p-6 sm:p-8 shadow-xl relative group overflow-hidden rounded-2xl">
+                        <div className="absolute top-0 left-0 w-8 h-1 bg-gradient-to-r from-[#84cc16] to-transparent opacity-30"></div>
+                        <div className="absolute top-0 left-0 w-1 h-8 bg-gradient-to-b from-[#84cc16] to-transparent opacity-30"></div>
+                        
+                        <h4 className="text-2xl font-bold text-white mb-2 tracking-tight">{item.title}</h4>
+                        <p className="text-sm sm:text-base text-zinc-400 mb-6">{item.subtitle}</p>
+                        
+                        <div className="flex flex-col gap-3 mb-6 text-xs text-zinc-500 border-y border-white/5 py-4">
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            {item.date}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            {item.location}
+                          </span>
+                        </div>
+                        
+                        <p className="text-zinc-300 leading-relaxed mb-6 text-sm">
+                          {item.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.tags.map((tag) => (
+                            <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-medium text-zinc-300 rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
 
         </div>
