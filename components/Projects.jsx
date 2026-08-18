@@ -32,23 +32,31 @@ export default function Projects() {
               transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col group cursor-pointer h-full"
             >
-              {/* Image Container - Pure image, no background box */}
-              <div className="relative aspect-video rounded-xl overflow-hidden mb-6 shrink-0">
+              {/* Image Container */}
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-6 shrink-0 bg-[#09090b] border border-white/5">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-contain scale-100 group-hover:scale-105 transition-transform duration-[1.2s] ease-[0.16,1,0.3,1]"
+                  className="w-full h-full object-contain scale-100 group-hover:scale-105 transition-all duration-700 ease-[0.16,1,0.3,1]"
                 />
               </div>
 
               {/* Content Container */}
               <div className="flex flex-col px-1 flex-grow">
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-2 tracking-tight group-hover:text-[#84cc16] transition-colors duration-300">
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tight group-hover:text-[#84cc16] transition-colors duration-300 mb-3">
                   {project.title}
                 </h3>
-                <p className="text-sm text-zinc-400 mb-6 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </p>
+                
+                {/* Description - Fixed height with an ellipsis normally, becomes scrollable on hover */}
+                <div 
+                  className="mb-6 h-[44px] overflow-hidden group-hover:overflow-y-auto pr-1"
+                  style={{ scrollbarWidth: 'thin', scrollbarColor: '#3f3f46 transparent' }}
+                >
+                  <p className="text-sm text-zinc-500 line-clamp-2 group-hover:line-clamp-none group-hover:text-zinc-300 leading-relaxed transition-colors duration-300">
+                    {project.description}
+                  </p>
+                </div>
                 
                 {/* Action Links - Modern Pills with Sweep Animation */}
                 <div className="flex items-center gap-4 mt-auto">

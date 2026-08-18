@@ -1,50 +1,49 @@
 [
   {
+    "id": 6,
+    "title": "Vehicle Smoke Emission Detetion and tracking system",
+    "description": "This project is a real-time vehicle smoke detection system that identifies polluting vehicles and alerts relevant authorities. Using YOLO for object detection and tracking, it analyzes video feeds to detect smoke, calculates emission levels, and integrates with a notification service to notify traffic police, environmental agencies, and vehicle owners. The system also features historical data logging and analytics to track pollution hotspots and emission trends.",
+    "image": "/cv-project.png",
+    "githubUrl": "https://github.com/muneebtahir-12/Vehicle-Fitness-Detection"
+  },
+  {
     "id": 1,
-    "title": "Project 1",
-    "description": "A modern web application built with cutting edge technologies.",
+    "title": "E-Commerce Website",
+    "description": "A modern digital storefront designed for a seamless shopping experience. The platform features an intuitive interface with comprehensive product categorization, dynamic cart and wishlist management, and a streamlined end-to-end checkout process focused on maximizing user engagement.",
     "image": "/projects/project1.jpeg",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/muneebtahir-12/Ecommerce-Store",
+    "liveUrl": "https://ecommerce-store-kjr1.vercel.app/"
   },
   {
     "id": 2,
-    "title": "Project 2",
-    "description": "An interactive dashboard for data visualization and analytics.",
+    "title": "Hygrix",
+    "description": "A modern, user-friendly healthcare frontend developed entirely by me for a client during my tenure at a software company. This project focuses on clean aesthetics, responsive design, and delivering a seamless digital experience tailored to professional corporate standards.",
     "image": "/projects/project2.png",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/muneebtahir-12/Hygrix",
+    "liveUrl": "https://hygrix.vercel.app/"
   },
   {
     "id": 3,
-    "title": "Project 3",
-    "description": "A scalable and responsive e-commerce platform.",
+    "title": " Bensan",
+    "description": "A professional frontend web interface developed for a corporate healthcare client during my tenure at a software company. This project features a clean, responsive design tailored for medical supplies, focusing on clear typography, strategic product showcasing, and intuitive navigation to meet high industry standards.",
     "image": "/projects/project3.png",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/muneebtahir-12/Bensan-",
+    "liveUrl": "https://bensan.vercel.app/"
   },
   {
     "id": 4,
-    "title": "Project 4",
-    "description": "Real-time chat application with secure authentication.",
+    "title": "Neudym Ai",
+    "description": "Developed a premium, dark-themed frontend for an AI brand with a strong focus on smooth, immersive animations. Implemented dynamic scroll effects and fluid UI transitions to create a futuristic and highly interactive user experience.",
     "image": "/projects/project4.png",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/muneebtahir-12/neudymAi",
+    "liveUrl": "https://neudym-ai-5lze.vercel.app/index.html"
   },
   {
     "id": 5,
-    "title": "Project 5",
-    "description": "AI-powered content generation tool.",
+    "title": "Real-Time Weather Web App",
+    "description": "A dynamic weather tracking application developed during my web development internship at Sinnex. This project focuses on real-time data fetching through seamless REST API integration, delivering accurate and up-to-date weather forecasts within a clean, responsive user interface.",
     "image": "/projects/project5.png",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
-  },
-  {
-    "id": 6,
-    "title": "Project 6",
-    "description": "Computer vision pipeline for real-time object tracking.",
-    "image": "/projects/project6.png",
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/muneebtahir-12/Weather-Project",
+    "liveUrl": "https://weather-project-rho-eight.vercel.app/"
   }
 ]

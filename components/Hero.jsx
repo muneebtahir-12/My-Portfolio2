@@ -25,30 +25,74 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images
+  // Preload images progressively to avoid blocking the main thread
   useEffect(() => {
-    const loadedImages = [];
-    let loadedCount = 0;
+    const loadedImagesArray = new Array(frameCount).fill(null);
+    let isCancelled = false;
 
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      const frameNumber = i.toString().padStart(6, "0");
-      img.src = `/frames/frame_${frameNumber}.jpg`;
+    const loadFrame = (i) => {
+      if (isCancelled) return Promise.resolve();
+      return new Promise((resolve) => {
+        const img = new Image();
+        const frameNumber = i.toString().padStart(6, "0");
+        img.src = `/frames/frame_${frameNumber}.jpg`;
 
-      img.onload = () => {
-        loadedCount++;
-        // Draw the first frame immediately when loaded
-        if (loadedCount === 1) {
-          const canvas = canvasRef.current;
-          if (canvas) {
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        img.onload = () => {
+          if (isCancelled) return;
+          loadedImagesArray[i] = img;
+          
+          // Draw the very first frame immediately
+          if (i === 0) {
+            const canvas = canvasRef.current;
+            if (canvas) {
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            }
           }
+          resolve();
+        };
+        img.onerror = () => resolve();
+      });
+    };
+
+    const loadAll = async () => {
+      // 1. Critical path: Load first 10 frames instantly
+      const initialLoad = [];
+      for (let i = 0; i < Math.min(10, frameCount); i++) {
+        initialLoad.push(loadFrame(i));
+      }
+      await Promise.all(initialLoad);
+      if (isCancelled) return;
+      setImages([...loadedImagesArray]);
+
+      // 2. Wait until the window is fully loaded (preloader finished) to not steal bandwidth
+      if (document.readyState !== "complete") {
+        await new Promise(r => window.addEventListener('load', r, { once: true }));
+      }
+      
+      // 3. Background path: Load the rest in small chunks
+      for (let i = 10; i < frameCount; i += 10) {
+        if (isCancelled) break;
+        const chunk = [];
+        for (let j = i; j < Math.min(i + 10, frameCount); j++) {
+          chunk.push(loadFrame(j));
         }
-      };
-      loadedImages.push(img);
-    }
-    setImages(loadedImages);
+        await Promise.all(chunk);
+        
+        // Yield to main thread briefly between chunks
+        await new Promise(r => setTimeout(r, 20)); 
+      }
+      
+      if (!isCancelled) {
+        setImages([...loadedImagesArray]);
+      }
+    };
+
+    loadAll();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   // Set up Framer Motion scroll tracking

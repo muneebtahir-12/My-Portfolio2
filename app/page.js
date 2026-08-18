@@ -1,12 +1,14 @@
+import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import About from "../components/About";
-import Services from "../components/Services";
-import Projects from "../components/Projects";
-import Experience from "../components/Experience";
-import Contact from "../components/Contact";
-import Gallery from "../components/Gallery";
-import FloatingWhatsApp from "../components/FloatingWhatsApp";
+
+const About = dynamic(() => import("../components/About"));
+const Services = dynamic(() => import("../components/Services"));
+const Projects = dynamic(() => import("../components/Projects"));
+const Experience = dynamic(() => import("../components/Experience"));
+const Contact = dynamic(() => import("../components/Contact"));
+const Gallery = dynamic(() => import("../components/Gallery"));
+const FloatingWhatsApp = dynamic(() => import("../components/FloatingWhatsApp"));
 
 export default function Home() {
   return (
